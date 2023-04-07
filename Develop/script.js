@@ -3,10 +3,11 @@ var generateBtn = document.querySelector("#generate");
 
 // Possible character types based on user input
 var passwordLength = '';
-var lowercase = false;
-var uppercase = false;
-var numbers = false;
-var specialChar = false;
+var lowercase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+var uppercase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+var numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+var specialChar = ['~', '!', '@', '#', '$', '%', '^', '&', '*', '-', '+', '=', '/', '.', ':', ';', '?', '_', ',', ''];
+var password = '';
 
 function generatePassword() {
 
@@ -23,46 +24,70 @@ function generatePassword() {
   function includeUppercase() {
     uppercase = window.confirm('Would you like to include uppercase letters in your password? Select OK for yes or CANCEL for no.');
     if (uppercase) {
-      includeUppercase();
+      includeUppercase = true;
     } else {
       window.alert('Your password will not include uppercase letters.');
+      includeUppercase = false;
     };
   };
 
   function includeLowercase() {
     lowercase = window.confirm('Would you like to include lowercase letters in your password? Select OK for yes or CANCEL for no.');
     if (lowercase) {
-      includeUppercase();
+      includeLowercase = true;
     } else {
       window.alert('Your password will not include lowercase letters.');
+      includeLowercase = false;
     };
   };
 
   function includeNumbers() {
     numbers = window.confirm('Would you like to include numbers in your password? Select OK for yes or CANCEL for no.');
     if (numbers) {
-      includeNumbers();
+      includeNumbers = true;
     } else {
       window.alert('Your password will not include numbers.');
+      includeNumbers = false;
     };
   };
 
   function includeSpecialChar() {
     specialChar = window.confirm('Would you like to include special characters in your password? Select OK for yes or CANCEL for no.');
     if (specialChar) {
-      includeSpecialChar();
+      includeSpecialChar = true;
     } else {
       window.alert('Your password will not include lowercase letters.');
+      includeSpecialChar = false;
     };
   };
+};
+// WRITE THE CODE TO RETURN THIS OUTPUT | RANDOMLY CREATE CHARACTERS AND BRING THEM BACK TOGETHER AS A STRING
 
-  // WRITE THE CODE TO RETURN THIS OUTPUT | RANDOMLY CREATE CHARACTERS AND BRING THEM BACK TOGETHER AS A STRING --> GO THRU ACCEPTANCE CRITERIA AND PSEUDO CODE IT OUT  
+function returnPassword() {
+  var pwCharSet = "i";
+  if (includeUppercase === true) {
+    pwCharSet = uppercase;
+  }
+
+  if (includeLowercase === true) {
+    pwCharSet = pwCharSet + lowercase;
+  }
+
+  if (includeNumbers === true) {
+    pwCharSet = pwCharSet + numbers;
+  }
+
+  if (includeSpecialChar === true) {
+    pwCharSet = pwCharSet + specialChar;
+  }
+
+  password = pwCharSet[Math.floor(Math.random() * pwCharSet.passwordLength)];
   return password;
 };
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  var password = "";
   var passwordText = document.querySelector('#password');
 
   passwordText.value = password;
@@ -70,3 +95,5 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+console.log(window);
