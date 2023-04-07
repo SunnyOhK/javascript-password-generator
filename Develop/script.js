@@ -1,71 +1,64 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+// Possible character types based on user input
+var passwordLength = '';
+var lowercase = false;
+var uppercase = false;
+var numbers = false;
+var specialChar = false;
+
 function generatePassword() {
-  var passwordLength = "",
-  var lowLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-  var capLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-  var numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-  var specialChar = ['~', '!', '@', '#', '$', '%', '^', '&', '*', '-', '+', '=', '/', '.', ':', ';', '?'];
 
-
-  // prompt for password length --> stored in a variable
-  generateBtn.addEventListener("click", passwordLength);
-
-  function passwordLength() {
-    passwordLength = prompt('Please input the desired length (8 - 128 characters) of your password.', "12");
+  function setPasswordLength() {
+    passwordLength = window.prompt('Please select the length for your password (between 8 and 128 characters).');
     if (passwordLength < 8 || passwordLength > 128) {
-      document.getElementById("generate").innerHTML = "Please choose a valid password length of 8 - 128 characters.";
-    }
-    else {
-      document.getElementById("generate").innerHTML = "Your password will be" + passwordLength + " characters long.";
+      window.alert('Please choose a valid password length of 8 - 128 characters.');
+      generatePassword();
+    } else {
+      window.alert('Your password will be" + passwordLength + " characters long');
     }
   }
 
-
-  function lowLetters() {
-    if (confirm("Would you like your password to include lowercase letters?") == true) {
-      prompt("",)
-      // DO include lowLetters in variable set
+  function includeUppercase() {
+    uppercase = window.confirm('Would you like to include uppercase letters in your password? Select OK for yes or CANCEL for no.');
+    if (uppercase) {
+      includeUppercase();
+    } else {
+      window.alert('Your password will not include uppercase letters.');
     };
-    else {
-      // DO NOT include lowLetters in variable set
-    }
-  }
+  };
 
-  function capLetters() {
-
-    if (confirm("Would you like your password to include UPPERCASE letters?") == true) {
-      prompt("",)
-      // DO include capLetters in variable set
+  function includeLowercase() {
+    lowercase = window.confirm('Would you like to include lowercase letters in your password? Select OK for yes or CANCEL for no.');
+    if (lowercase) {
+      includeUppercase();
+    } else {
+      window.alert('Your password will not include lowercase letters.');
     };
-    else {
-      // DO NOT include capLetters in variable set
-    }
-  }
+  };
 
-  function numbers() {
-
-    if (confirm("Would you like your password to include numbers?") == true) {
-      prompt("",)
-      // DO include numbers in variable set
+  function includeNumbers() {
+    numbers = window.confirm('Would you like to include numbers in your password? Select OK for yes or CANCEL for no.');
+    if (numbers) {
+      includeNumbers();
+    } else {
+      window.alert('Your password will not include numbers.');
     };
-    else {
-      // DO NOT include numbers in variable set
-    }
-  }
+  };
 
-  function specialChar() {
-
-    if (confirm("Would you like your password to include special characters?") == true) {
-      prompt("",)
-      // DO include special characters in variable set
+  function includeSpecialChar() {
+    specialChar = window.confirm('Would you like to include special characters in your password? Select OK for yes or CANCEL for no.');
+    if (specialChar) {
+      includeSpecialChar();
+    } else {
+      window.alert('Your password will not include lowercase letters.');
     };
-    else {
-      // DO NOT include special characters in variable set
-    }
-  }
-}
+  };
+
+  // WRITE THE CODE TO RETURN THIS OUTPUT | RANDOMLY CREATE CHARACTERS AND BRING THEM BACK TOGETHER AS A STRING --> GO THRU ACCEPTANCE CRITERIA AND PSEUDO CODE IT OUT  
+  return password;
+};
 
 // Write password to the #password input
 function writePassword() {
@@ -73,33 +66,7 @@ function writePassword() {
   var passwordText = document.querySelector('#password');
 
   passwordText.value = password;
-}
-var password = "";
-var passwordLength = '';
-
-// for (var i = 0; 8 < passwordLength < 129; i++) {
-
-function generatePassword() {
-
-  // WRITE THE CODE TO RETURN THIS OUTPUT | RANDOMLY CREATE CHARACTERS AND BRING THEM BACK TOGETHER AS A STRING --> GO THRU ACCEPTANCE CRITERIA AND PSEUDO CODE IT OUT  
-  return userPassword;
-}
+};
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-// GIVEN I need a new, secure password
-// WHEN I click the button to generate a password
-// THEN I am presented with a series of prompts for password criteria
-// WHEN prompted for password criteria
-// THEN I select which criteria to include in the password
-// WHEN prompted for the length of the password
-// THEN I choose a length of at least 8 characters and no more than 128 characters
-// WHEN asked for character types to include in the password
-// THEN I confirm whether or not to include lowercase, uppercase, numeric, and / or special characters
-// WHEN I answer each prompt
-// THEN my input should be validated and at least one character type should be selected
-// WHEN all prompts are answered
-// THEN a password is generated that matches the selected criteria
-// WHEN the password is generated
-// THEN the password is either displayed in an alert or written to the page
