@@ -1,12 +1,34 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var length = [> 7; < 129];
+var password = "";
+var passwordLength = '';
 var lowLetter = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 var capLetter = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-var numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-var specialChar = ['~','!','@','#','$','%','^','&','*','-','+','=','\','/','.',',',':',';','?']
+var numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+var specialChar = ['~', '!', '@', '#', '$', '%', '^', '&', '*', '-', '+', '=', '/', '.', ':', ';', '?'];
 
+// for (var i = 0; 8 < passwordLength < 129; i++) {
+
+// }
 function generatePassword() {
+
+  generateBtn.addEventListener("click", writePassword);
+  
+  passwordLength = prompt('Please input the desired length (8 - 128 characters) of your password.');
+  if (passwordLength > 7 && passwordLength < 129) {
+    alert("Please choose a valid password length of 8 - 128 characters.");
+    else {
+      alert("Great! Now, would you like to include UPPERCASE letters?");
+    }
+  };
+};
+
+console.log();
+
+
+function randomN() { var randomNumber = Math.floor(Math.random() * 122 + 1); if (randomNumber >= 48 && randomNumber <= 123) { document.getElementById("test").innerHTML = randomNumber; } else { randomN() } } randomN();
+
+
   // Need the following variables:
     // selected length of the password
     // array of lowercase letters
@@ -22,7 +44,7 @@ function generatePassword() {
   // prompt --> Do they want lowercase letters?
   // prompt --> Do they want numbers?
   // prompt --> Do they want special characters?
-  
+
   // Validate that the user has chosen at least one character set --> If not, either have them start over OR recursively call the function that prompts for the character sets
   // With each of those prompts, you need an array of those character types
     // There needs to be at least one of each selected character type included in the password
@@ -46,9 +68,9 @@ function writePassword() {
 
 }
 
-function generatePassword(){
+function generatePassword() {
 
-// WRITE THE CODE TO RETURN THIS OUTPUT | RANDOMLY CREATE CHARACTERS AND BRING THEM BACK TOGETHER AS A STRING --> GO THRU ACCEPTANCE CRITERIA AND PSEUDO CODE IT OUT  
+  // WRITE THE CODE TO RETURN THIS OUTPUT | RANDOMLY CREATE CHARACTERS AND BRING THEM BACK TOGETHER AS A STRING --> GO THRU ACCEPTANCE CRITERIA AND PSEUDO CODE IT OUT  
   return userPassword;
 }
 
