@@ -9,7 +9,6 @@ var generateBtn = document.querySelector("#generate");
 function generatePassword() {
   console.log("ding!");
 
-
   // Possible character types based on user input
   var length = '';
   var lowercase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
@@ -74,50 +73,79 @@ function generatePassword() {
   };
 
   function includeSymbols() {
-    symbols = window.confirm('Would you like to include special characters in your password?');
+    symbols = window.confirm('Would you like to include special characters/ symbols in your password?');
     if (symbols) {
       includeSymbols = true;
-      window.alert('Your password WILL include symbols.');
+      window.alert('Your password WILL include special characters/symbols.');
 
     } else {
-      window.alert('Your password WILL NOT include special characters.');
+      window.alert('Your password WILL NOT include special characters/symbols.');
       includeSymbols = false;
-    };
+    }
+    createPassword(window.alert('Working on it!'));
   };
-};
-// WRITE THE CODE TO RETURN THIS OUTPUT | RANDOMLY CREATE CHARACTERS AND BRING THEM BACK TOGETHER AS A STRING
 
-function returnPassword() {
-  var passwordChar = "i";
+  // WRITE THE CODE TO RETURN THIS OUTPUT | RANDOMLY CREATE CHARACTERS AND BRING THEM BACK TOGETHER AS A STRING
+};
+
+function createPassword() {
+  var passwordCharSet = "";
+
+  for (var i = 0; i < length; i++) {
+    passwordCharSet = passwordCharSet[Math.floor(Math.random() * passwordCharSet.length)];
+  }
+  //   if (includeUppercase === true && includeLowercase === true && includeNumbers === true && includeSymbols === true) {
+  //     passwordCharSet = uppercase + lowercase + numbers + symbols;
+  //   }
+
+  //   else if {
+  //     (includeUppercase === false && includeLowercase === true && includeNumbers === true && includeSymbols === true)
+  //     passwordCharSet = lowercase + numbers + symbols;
+
+  //   } 
+
+  //   else if {
+  //     (includeUppercase === true && includeLowercase === false && includeNumbers === true && includeSymbols === true)
+  //     passwordCharSet = uppercase + numbers + symbols;
+  //   } 
+
+  //   else if {
+  //     (includeUppercase === true && includeLowercase === true && includeNumbers === true && includeSymbols === true)
+  //     passwordCharSet = ;
+  // }
+
   if (includeUppercase === true) {
-    passwordChar = uppercase;
+    passwordCharSet = uppercase;
+  } else {
+    passwordCharSet = !uppercase;
   }
 
   if (includeLowercase === true) {
-    passwordChar = passwordChar + lowercase;
+    passwordCharSet = passwordCharSet + lowercase;
+  } else {
+    passwordCharSet = passwordCharSet + !lowercase;
   }
 
   if (includeNumbers === true) {
     passwordChar = passwordChar + numbers;
+  } else {
+    passwordChar = passwordChar + !numbers;
   }
 
   if (includeSymbols === true) {
     passwordChar = passwordChar + symbols;
+  } else {
+    passwordChar = passwordChar + !symbols;
   }
 
-  var password = passwordChar[Math.floor(Math.random() * passwordChar.length)];
-  return "New password will be here!";
+  writePassword();
 };
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
   var passwordText = document.querySelector('#password');
-
   passwordText.value = password;
 };
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-console.log(window);
