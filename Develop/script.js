@@ -6,22 +6,19 @@ var generateBtn = document.querySelector("#generate");
 // 2. Validate user inputs
 // 3. Generate and display password for user
 
+// Possible character types based on user input
+var length = 0;
+var lowercase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+var uppercase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+var symbols = ['~', '!', '@', '#', '$', '%', '^', '&', '*', '-', '+', '=', '/', '.', ':', ';', '?', '_', ',', ''];
+var megaArray = [];
+
 function generatePassword() {
-  console.log("ding!");
 
-  // Possible character types based on user input
-  var length = '';
-  var lowercase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-  var uppercase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-  var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  var symbols = ['~', '!', '@', '#', '$', '%', '^', '&', '*', '-', '+', '=', '/', '.', ':', ';', '?', '_', ',', ''];
-
-  window.confirm('Welcome to the password generator! Please click "OK" to continue or "Cancel" to exit.');
-  if (window.confirm("Great! Let's get started.") == true) {
-    setLength();
-  } else if (window.confirm("You have exited the password generator.")) {
-    return;
-  }
+  window.alert('Welcome to the password generator! Please click "OK" to continue.');
+  window.alert("Let's get started.");
+  setLength();
 
   function setLength() {
     var length = prompt('Please select the length for your password (between 8 and 128 characters).');
@@ -32,119 +29,101 @@ function generatePassword() {
       window.alert('Your password will be ' + length + ' characters long.');
       includeUppercase();
     }
-  }
+  };
 
   function includeUppercase() {
-    uppercase = window.confirm('Would you like to include uppercase letters in your password?');
-    if (uppercase) {
-      includeUppercase = true;
+    includeUppercase = window.confirm('Would you like to include uppercase letters in your password?');
+    if (includeUppercase === true) {
+      uppercase = true;
       window.alert('Your password WILL include uppercase letters.');
     } else {
       window.alert('Your password WILL NOT include uppercase letters.');
-      includeUppercase = false;
+      uppercase = false;
     };
     includeLowercase();
   };
 
   function includeLowercase() {
-    lowercase = window.confirm('Would you like to include lowercase letters in your password?');
-    if (lowercase) {
-      includeLowercase = true;
+    includeLowercase = window.confirm('Would you like to include lowercase letters in your password?');
+    if (includeLowercase === true) {
+      lowercase = true;
       window.alert('Your password WILL include lowercase letters.');
 
     } else {
       window.alert('Your password WILL NOT include lowercase letters.');
-      includeLowercase = false;
+      lowercase = false;
     };
     includeNumbers();
   };
 
   function includeNumbers() {
-    numbers = window.confirm('Would you like to include numbers in your password?');
-    if (numbers) {
-      includeNumbers = true;
+    includeNumbers = window.confirm('Would you like to include numbers in your password?');
+    if (includeNumbers === true) {
+      numbers = true;
       window.alert('Your password WILL include numbers.');
 
     } else {
       window.alert('Your password WILL NOT include numbers.');
-      includeNumbers = false;
+      numbers = false;
     };
     includeSymbols();
   };
 
   function includeSymbols() {
-    symbols = window.confirm('Would you like to include special characters/ symbols in your password?');
-    if (symbols) {
-      includeSymbols = true;
+    includeSymbols = window.confirm('Would you like to include special characters/ symbols in your password?');
+    if (includeSymbols === true) {
+      symbols = true;
       window.alert('Your password WILL include special characters/symbols.');
 
     } else {
       window.alert('Your password WILL NOT include special characters/symbols.');
-      includeSymbols = false;
+      symbols = false;
     }
-    createPassword(window.alert('Working on it!'));
   };
 
-  // WRITE THE CODE TO RETURN THIS OUTPUT | RANDOMLY CREATE CHARACTERS AND BRING THEM BACK TOGETHER AS A STRING
+  // Move to function of creating the password based on user input
+
+  createPassword();
 };
 
+  // WRITE THE CODE TO RETURN THIS OUTPUT | RANDOMLY CREATE CHARACTERS AND BRING THEM BACK TOGETHER AS A STRING
+
 function createPassword() {
-  var passwordCharSet = "";
-
-  for (var i = 0; i < length; i++) {
-    passwordCharSet = passwordCharSet[Math.floor(Math.random() * passwordCharSet.length)];
-  }
-  //   if (includeUppercase === true && includeLowercase === true && includeNumbers === true && includeSymbols === true) {
-  //     passwordCharSet = uppercase + lowercase + numbers + symbols;
-  //   }
-
-  //   else if {
-  //     (includeUppercase === false && includeLowercase === true && includeNumbers === true && includeSymbols === true)
-  //     passwordCharSet = lowercase + numbers + symbols;
-
-  //   } 
-
-  //   else if {
-  //     (includeUppercase === true && includeLowercase === false && includeNumbers === true && includeSymbols === true)
-  //     passwordCharSet = uppercase + numbers + symbols;
-  //   } 
-
-  //   else if {
-  //     (includeUppercase === true && includeLowercase === true && includeNumbers === true && includeSymbols === true)
-  //     passwordCharSet = ;
-  // }
+  // window.alert('Working on it!');
+  // megaArray variable has been defined as an empty array; now I need to push the other variable arrays into this based on user input
 
   if (includeUppercase === true) {
-    passwordCharSet = uppercase;
-  } else {
-    passwordCharSet = !uppercase;
+    megaArray = [uppercase];
   }
 
   if (includeLowercase === true) {
-    passwordCharSet = passwordCharSet + lowercase;
-  } else {
-    passwordCharSet = passwordCharSet + !lowercase;
+    megaArray = megaArray.concat(lowercase);
   }
 
   if (includeNumbers === true) {
-    passwordChar = passwordChar + numbers;
-  } else {
-    passwordChar = passwordChar + !numbers;
+    megaArray = megaArray.concat(numbers);
   }
 
   if (includeSymbols === true) {
-    passwordChar = passwordChar + symbols;
-  } else {
-    passwordChar = passwordChar + !symbols;
+    megaArray = megaArray.concat(symbols);
   }
 
-  writePassword();
+  for (var i = 0; i < length; i++) {
+    password = megaArray(Math.floor(Math.random() * megaArray.length));
+  };
+
+  document.querySelector("#password").innerHTML = password;
 };
 
 // Write password to the #password input
+
 function writePassword() {
-  var passwordText = document.querySelector('#password');
+
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
   passwordText.value = password;
+
 };
 
 // Add event listener to generate button
