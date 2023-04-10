@@ -1,4 +1,4 @@
-# sunny-ovson-portfolio
+# javascript-password-generator
 
 ## Description
 
