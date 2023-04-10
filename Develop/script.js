@@ -6,15 +6,16 @@ var generateBtn = document.querySelector("#generate");
 // 2. Validate user inputs
 // 3. Generate and display password for user
 
+// Possible character types based on user input
+var length = 0;
+var lowercase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+var uppercase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+var symbols = ['~', '!', '@', '#', '$', '%', '^', '&', '*', '-', '+', '=', '/', '.', ':', ';', '?', '_', ',', ''];
+var megaArray = [];
+
 function generatePassword() {
   console.log("ding!");
-
-  // Possible character types based on user input
-  var length = '';
-  var lowercase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-  var uppercase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-  var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  var symbols = ['~', '!', '@', '#', '$', '%', '^', '&', '*', '-', '+', '=', '/', '.', ':', ';', '?', '_', ',', ''];
 
   window.confirm('Welcome to the password generator! Please click "OK" to continue or "Cancel" to exit.');
   if (window.confirm("Great! Let's get started.") == true) {
@@ -35,7 +36,7 @@ function generatePassword() {
   }
 
   function includeUppercase() {
-    uppercase = window.confirm('Would you like to include uppercase letters in your password?');
+    includeUppercase = window.confirm('Would you like to include uppercase letters in your password?');
     if (uppercase) {
       includeUppercase = true;
       window.alert('Your password WILL include uppercase letters.');
@@ -47,7 +48,7 @@ function generatePassword() {
   };
 
   function includeLowercase() {
-    lowercase = window.confirm('Would you like to include lowercase letters in your password?');
+    includeLowercase = window.confirm('Would you like to include lowercase letters in your password?');
     if (lowercase) {
       includeLowercase = true;
       window.alert('Your password WILL include lowercase letters.');
@@ -60,7 +61,7 @@ function generatePassword() {
   };
 
   function includeNumbers() {
-    numbers = window.confirm('Would you like to include numbers in your password?');
+    includeNumbers = window.confirm('Would you like to include numbers in your password?');
     if (numbers) {
       includeNumbers = true;
       window.alert('Your password WILL include numbers.');
@@ -73,7 +74,7 @@ function generatePassword() {
   };
 
   function includeSymbols() {
-    symbols = window.confirm('Would you like to include special characters/ symbols in your password?');
+    includeSymbols = window.confirm('Would you like to include special characters/ symbols in your password?');
     if (symbols) {
       includeSymbols = true;
       window.alert('Your password WILL include special characters/symbols.');
@@ -82,69 +83,51 @@ function generatePassword() {
       window.alert('Your password WILL NOT include special characters/symbols.');
       includeSymbols = false;
     }
-    createPassword(window.alert('Working on it!'));
+    var firstPassword = createPassword();
+      };
+      
+   // WRITE THE CODE TO RETURN THIS OUTPUT | RANDOMLY CREATE CHARACTERS AND BRING THEM BACK TOGETHER AS A STRING
+   return firstPassword;
+};
+
+  function createPassword() {
+    window.alert('Working on it!');
+    var passwordCharSet = "";
+    var arr = [];
+
+    if (includeUppercase) {
+      megaArray.push(uppercase);
+    }
+  
+    if (includeLowercase) {
+      megaArray.push(lowercase);
+    }
+
+    if (includeNumbers) {
+      megaArray.push(numbers);
+    } 
+
+    if (includeSymbols) {
+      megaArray.push(symbols);
+    } 
+
+    for (var i = 0; i < length; i++) {
+      arr.push(megaArray[Math.floor(Math.random() * megaArray.length)]);
+    }; 
+
+    passwordChar = arr.toString();
+    return passwordChar;
   };
 
-  // WRITE THE CODE TO RETURN THIS OUTPUT | RANDOMLY CREATE CHARACTERS AND BRING THEM BACK TOGETHER AS A STRING
-};
+  // Write password to the #password input
 
-function createPassword() {
-  var passwordCharSet = "";
-
-  for (var i = 0; i < length; i++) {
-    passwordCharSet = passwordCharSet[Math.floor(Math.random() * passwordCharSet.length)];
-  }
-  //   if (includeUppercase === true && includeLowercase === true && includeNumbers === true && includeSymbols === true) {
-  //     passwordCharSet = uppercase + lowercase + numbers + symbols;
-  //   }
-
-  //   else if {
-  //     (includeUppercase === false && includeLowercase === true && includeNumbers === true && includeSymbols === true)
-  //     passwordCharSet = lowercase + numbers + symbols;
-
-  //   } 
-
-  //   else if {
-  //     (includeUppercase === true && includeLowercase === false && includeNumbers === true && includeSymbols === true)
-  //     passwordCharSet = uppercase + numbers + symbols;
-  //   } 
-
-  //   else if {
-  //     (includeUppercase === true && includeLowercase === true && includeNumbers === true && includeSymbols === true)
-  //     passwordCharSet = ;
-  // }
-
-  if (includeUppercase === true) {
-    passwordCharSet = uppercase;
-  } else {
-    passwordCharSet = !uppercase;
-  }
-
-  if (includeLowercase === true) {
-    passwordCharSet = passwordCharSet + lowercase;
-  } else {
-    passwordCharSet = passwordCharSet + !lowercase;
-  }
-
-  if (includeNumbers === true) {
-    passwordChar = passwordChar + numbers;
-  } else {
-    passwordChar = passwordChar + !numbers;
-  }
-
-  if (includeSymbols === true) {
-    passwordChar = passwordChar + symbols;
-  } else {
-    passwordChar = passwordChar + !symbols;
-  }
-
-  writePassword();
-};
-
-// Write password to the #password input
 function writePassword() {
-  var passwordText = document.querySelector('#password');
+
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
   passwordText.value = password;
+
 };
 
 // Add event listener to generate button

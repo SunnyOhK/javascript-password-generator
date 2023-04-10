@@ -30,6 +30,26 @@
     // return the generated password 
 }
 
+    //   if (includeUppercase === true && includeLowercase === true && includeNumbers === true && includeSymbols === true) {
+    //     passwordCharSet = uppercase + lowercase + numbers + symbols;
+    //   }
+
+    //   else if {
+    //     (includeUppercase === false && includeLowercase === true && includeNumbers === true && includeSymbols === true)
+    //     passwordCharSet = lowercase + numbers + symbols;
+
+    //   } 
+
+    //   else if {
+    //     (includeUppercase === true && includeLowercase === false && includeNumbers === true && includeSymbols === true)
+    //     passwordCharSet = uppercase + numbers + symbols;
+    //   } 
+
+    //   else if {
+    //     (includeUppercase === true && includeLowercase === true && includeNumbers === true && includeSymbols === true)
+    //     passwordCharSet = ;
+    // }
+
 
 
 
