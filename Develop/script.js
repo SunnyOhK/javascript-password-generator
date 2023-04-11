@@ -40,11 +40,9 @@ function generatePassword() {
   function setIncludeUppercase() {
     includeUppercase = window.confirm('Would you like to include uppercase letters in your password?');
     if (includeUppercase === true) {
-
       window.alert('Your password WILL include uppercase letters.');
     } else {
       window.alert('Your password WILL NOT include uppercase letters.');
-
     };
     setIncludeLowercase();
   };
@@ -52,12 +50,9 @@ function generatePassword() {
   function setIncludeLowercase() {
     includeLowercase = window.confirm('Would you like to include lowercase letters in your password?');
     if (includeLowercase === true) {
-
       window.alert('Your password WILL include lowercase letters.');
-
     } else {
       window.alert('Your password WILL NOT include lowercase letters.');
-
     };
     setIncludeNumbers();
   };
@@ -65,12 +60,9 @@ function generatePassword() {
   function setIncludeNumbers() {
     includeNumbers = window.confirm('Would you like to include numbers in your password?');
     if (includeNumbers === true) {
-
       window.alert('Your password WILL include numbers.');
-
     } else {
       window.alert('Your password WILL NOT include numbers.');
-
     };
     setIncludeSymbols();
   };
@@ -78,12 +70,9 @@ function generatePassword() {
   function setIncludeSymbols() {
     includeSymbols = window.confirm('Would you like to include special characters/ symbols in your password?');
     if (includeSymbols === true) {
-
       window.alert('Your password WILL include special characters/symbols.');
-
     } else {
       window.alert('Your password WILL NOT include special characters/symbols.');
-
     }
     createPassword();
   };
@@ -117,16 +106,12 @@ function generatePassword() {
       randPass.push(randChar);
     };
 
-    
   };
 
- return randPass.join("")
- 
+  return randPass.join("")
 };
 
-// WRITE THE CODE TO RETURN THIS OUTPUT | RANDOMLY CREATE CHARACTERS AND BRING THEM BACK TOGETHER AS A STRING
-
-
+// WRITE THE CODE TO RETURN OUTPUT | RANDOMLY CREATE CHARACTERS AND BRING THEM BACK TOGETHER AS A STRING
 
 // Write password to the #password input
 
